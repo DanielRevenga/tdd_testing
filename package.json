@@ -4,11 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest --coverage",
+    "test:watch": "jest --watch"
   },
   "author": "daniel",
   "license": "ISC",
   "devDependencies": {
     "jest": "^27.3.1"
+  },
+  "dependencies": {
+    "@types/jest": "^27.0.3",
+    "ts-jest": "^27.1.1"
   }
 }

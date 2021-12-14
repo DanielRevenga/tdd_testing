@@ -176,20 +176,20 @@ test("... - totalOccupancyPercentage - 2 rooms 1 week, 0%", () => {
 // ... - availableRooms
 test("... - availableRooms - all rooms occupied", () => {
     let room = new Room("roomName", 0, 0);
-    booking = new Booking("bookingName", "test@email", "2022/11/01", "2022/11/30", 0, room);
-    booking2 = new Booking("booking2Name", "test2@email", "2022/11/02", "2022/11/30", 0, room);
-    booking3 = new Booking("booking3Name", "test3@email", "2022/11/21", "2022/11/30", 0, room);
+    const booking = new Booking("bookingName", "test@email", "2022/11/01", "2022/11/30", 0, room);
+    const booking2 = new Booking("booking2Name", "test2@email", "2022/11/02", "2022/11/30", 0, room);
+    const booking3 = new Booking("booking3Name", "test3@email", "2022/11/21", "2022/11/30", 0, room);
     const bookings = [booking, booking2, booking3];
     room.bookigns = bookings;
 
     let room2 = new Room("room2Name", 0, 0);
-    booking = new Booking("bookingName", "test@email", "2022/11/01", "2022/11/30", 0, room2);
-    booking2 = new Booking("booking2Name", "test2@email", "2022/11/06", "2022/11/10", 0, room2);
-    booking3 = new Booking("booking3Name", "test3@email", "2022/11/19", "2022/11/30", 0, room2);
-    const bookings2 = [booking, booking2, booking3];
+    const booking_ = new Booking("bookingName", "test@email", "2022/11/01", "2022/11/30", 0, room2);
+    const booking2_ = new Booking("booking2Name", "test2@email", "2022/11/06", "2022/11/10", 0, room2);
+    const booking3_ = new Booking("booking3Name", "test3@email", "2022/11/19", "2022/11/30", 0, room2);
+    const bookings2 = [booking_, booking2_, booking3_];
     room2.bookings = bookings2;
 
-    expect(availableRooms([room, room2], "2022/11/06", "2022/11/10" )).toMatchObject([]);
+    expect(availableRooms([room, room2], "2022/11/04", "2022/11/06" )).toMatchObject([]);
 });
 
 test("... - availableRooms - no rooms occupied", () => {
@@ -199,6 +199,8 @@ test("... - availableRooms - no rooms occupied", () => {
     booking3 = new Booking("booking3Name", "test3@email", "2022/11/21", "2022/11/30", 0, room);
     const bookings = [booking, booking2, booking3];
     room.bookigns = bookings;
+    console.log("bookings1: ");
+    console.log(room);
 
     let room2 = new Room("room2Name", 0, 0);
     booking = new Booking("bookingName", "test@email", "2022/11/01", "2022/11/30", 0, room2);
@@ -206,6 +208,8 @@ test("... - availableRooms - no rooms occupied", () => {
     booking3 = new Booking("booking3Name", "test3@email", "2022/11/19", "2022/11/30", 0, room2);
     const bookings2 = [booking, booking2, booking3];
     room2.bookings = bookings2;
+    console.log("bookings2: ");
+    console.log(room2);
 
     expect(availableRooms([room, room2], "2022/01/01", "2022/01/10" )).toMatchObject([room, room2]);
 });
